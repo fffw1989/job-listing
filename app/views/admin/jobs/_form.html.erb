@@ -1,10 +1,10 @@
 <%= simple_form_for [:admin, @job ] do |f| %>
 
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :wage_lower_bound, :label => "薪资下限" %>
-<%= f.input :wage_upper_bound, :label => "薪资上限" %>
-<%= f.input :contact_email %>
-<%= f.input :is_hidden %>
-  <%= f.submit "Submit" %>
+<%= f.input :title, :label =>"服务" %>
+<%= f.input :description, :label => "服务内容" %>
+<%= f.input :wage_lower_bound, :label => "服务时长（小时）" %>
+<%= f.input :wage_upper_bound, :label => "服务佣金（元）" %>
+<%= f.input :contact_email, :label => "联系方式" %>
+<%= f.input :is_hidden, :label => "隐藏" %>
+  <%= f.submit "确定" %>
 <% end %>

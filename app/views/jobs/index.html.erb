@@ -1,5 +1,5 @@
 <div class="pull-right">
-  <%= link_to("Add a job", new_job_path, :class => "btn btn-default" ) %>
+  <%= link_to("发布神器", new_job_path, :class => "btn btn-default" ) %>
 </div>
 
 <div class="dropdown clearfix pull-right">
@@ -9,14 +9,17 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
         <li>
-          <%= link_to("按照薪资下限排序", jobs_path(:order => "by_lower_bound")) %>
+          <%= link_to("按用户反馈排序", jobs_path(:order => "by_job.resumes.count"))%>
         </li>
         <li>
-            <%= link_to("按照薪资上限排序", jobs_path(:order => "by_upper_bound")) %>
+          <%= link_to("按服务时长排序", jobs_path(:order => "by_lower_bound")) %>
+        </li>
+        <li>
+            <%= link_to("按服务佣金排序", jobs_path(:order => "by_upper_bound")) %>
 
         </li>
         <li>
-          <%= link_to("按照发表时间排序", jobs_path ) %>
+          <%= link_to("按照发布时间排序", jobs_path ) %>
 
         </li>
     </ul>
@@ -25,10 +28,10 @@
 <table class="table table-boldered">
   <thead>
   <tr>
-    <td>职缺</td>
-    <td>薪资下限</td>
-    <td>薪资上限</td>
-    <td>管理选项</td>
+    <td>成长加速器</td>
+    <td>用户反馈</td>
+    <td>服务时长（小时）</td>
+    <td>服务佣金（元）</td>
     <td>发布时间</td>
   </tr>
   </thead>
@@ -37,12 +40,9 @@
     <td>
       <%= link_to(job.title, job_path(job)) %>
     </td>
+    <td><%= link_to(job.resumes.count, admin_job_resumes_path(job) ) %></td>
     <td><%= job.wage_lower_bound %></td>
     <td><%= job.wage_upper_bound %></td>
-    <td>
-      <%= link_to("Edit", edit_job_path(job)) %> |
-      <%= link_to("Destroy", job_path(job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-    </td>
     <td>
       <%= job.created_at %>
     </td>
